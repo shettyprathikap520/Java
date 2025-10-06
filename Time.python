@@ -1,0 +1,20 @@
+from datetime import datetime
+import pytz
+
+
+cities = {
+    "LON": "Europe/London",
+    "DUB": "Asia/Dubai",
+    "BLR": "Asia/Kolkata",
+    "SGP": "Asia/Singapore",
+    "TOK": "Asia/Tokyo",
+    "SYD": "Australia/Sydney",
+    "WEL": "Pacific/Auckland",
+    "NYC": "America/New_York",
+    "LAX": "America/Los_Angeles"
+}
+utc_time = datetime.now(pytz.utc)
+print(f"UTC Time: {utc_time.strftime('%Y-%m-%d %H:%M:%S')}\n")
+for city, zone in cities.items():
+    local_time = utc_time.astimezone(pytz.timezone(zone))
+    print(f"{city}: {local_time.strftime('%Y-%m-%d %H:%M:%S')}")
